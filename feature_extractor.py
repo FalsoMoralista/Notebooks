@@ -13,6 +13,16 @@ Original file is located at
 
 import os
 from xml.dom import minidom
+import tensorflow as tf
+from keras.applications.resnet50 import ResNet50, preprocess_input
+from keras.preprocessing import image
+from keras.models import Model
+import numpy as np
+
+print(tf.__version__) # compatible with tensorflow 1.14
+
+resnet50 = ResNet50(weights='imagenet')
+model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
 
 for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
     if filename.endswith(".jpg"):
@@ -21,17 +31,9 @@ for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
     	plant_class = doc.getElementsByTagName('ClassId')
     	print(plant_class[0].firstChild.data)
 
-#import tensorflow as tf
-#from keras.applications.resnet50 import ResNet50, preprocess_input
-#from keras.preprocessing import image
-#from keras.models import Model
 #import matplotlib.pyplot as plt
-#import numpy as np
 
-#print(tf.__version__) # compatible with tensorflow 1.14
 
-#resnet50 = ResNet50(weights='imagenet')
-#model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
 
 #resnet50.trainable = False
 
