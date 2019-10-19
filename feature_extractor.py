@@ -14,60 +14,44 @@ Original file is located at
 import os
 from xml.dom import minidom
 
-for filename in os.listdir('PlantCLEF2013'):
+for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
     if filename.endswith(".jpg"):
     	name = filename.replace('.jpg','')
-    	doc = minidom.parse('PlantCLEF2013/'+name+'.xml')
+    	doc = minidom.parse('/home/luciano/Desktop/PlantCLEF2013/'+name+'.xml')
     	plant_class = doc.getElementsByTagName('ClassId')
-    	print(plant_class)
+    	print(plant_class[0].firstChild.data)
 
-import tensorflow as tf
-from keras.applications.resnet50 import ResNet50, preprocess_input
-from keras.preprocessing import image
-from keras.models import Model
-import matplotlib.pyplot as plt
-import numpy as np
+#import tensorflow as tf
+#from keras.applications.resnet50 import ResNet50, preprocess_input
+#from keras.preprocessing import image
+#from keras.models import Model
+#import matplotlib.pyplot as plt
+#import numpy as np
 
-print(tf.__version__) # compatible with tensorflow 1.14
+#print(tf.__version__) # compatible with tensorflow 1.14
 
-resnet50 = ResNet50(weights='imagenet')
-model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
+#resnet50 = ResNet50(weights='imagenet')
+#model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
 
-resnet50.trainable = False
+#resnet50.trainable = False
 
-def download(url):
-  name = url.split("/")[-1]
-  image_path = tf.keras.utils.get_file(name, origin=url)
-  img = image.load_img(image_path)
-  return image.img_to_array(img)
+#url = 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg'
+#name = url.split("/")[-1]
+#image_path = tf.keras.utils.get_file(name, origin=url)
 
-def preprocess(img):
-  return (img / 127.5) - 1
+#img = image.load_img(image_path, target_size=(224, 224))
 
-def deprocess(img):
-  img = img.copy()
-  img /= 2.
-  img += 0.5
-  img += 255.
-  return np.clip(img,0,255).astype('uint8')
-
-url = 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg'
-name = url.split("/")[-1]
-image_path = tf.keras.utils.get_file(name, origin=url)
-
-img = image.load_img(image_path, target_size=(224, 224))
-
-img_data = image.img_to_array(img)
-img_data = np.expand_dims(img_data, axis=0)
-img_data = preprocess_input(img_data)
+#img_data = image.img_to_array(img)
+#img_data = np.expand_dims(img_data, axis=0)
+#img_data = preprocess_input(img_data)
 
 #raw_img = download(url)
 #img = tf.image.resize(raw_img, (224,224))
 
-features = model.predict(img_data)
+#features = model.predict(img_data)
 
-print(features.shape)
-print(features)
+#print(features.shape)
+#print(features)
 
 
 
