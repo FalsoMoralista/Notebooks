@@ -8,7 +8,18 @@ Original file is located at
 """
 
 #!pip install -q tensorflow==2.0.0-alpha0
-!pip install -q tensorflow==1.14
+#!pip install -q tensorflow==1.14
+
+
+import os
+from xml.dom import minidom
+
+for filename in os.listdir('PlantCLEF2013'):
+    if filename.endswith(".jpg"):
+    	name = filename.replace('.jpg','')
+    	doc = minidom.parse('PlantCLEF2013/'+name+'.xml')
+    	plant_class = doc.getElementsByTagName('ClassId')
+    	print(plant_class)
 
 import tensorflow as tf
 from keras.applications.resnet50 import ResNet50, preprocess_input
@@ -17,7 +28,7 @@ from keras.models import Model
 import matplotlib.pyplot as plt
 import numpy as np
 
-print(tf.__version__)
+print(tf.__version__) # compatible with tensorflow 1.14
 
 resnet50 = ResNet50(weights='imagenet')
 model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
