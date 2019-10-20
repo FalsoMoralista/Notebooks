@@ -50,7 +50,10 @@ fields.append('image name')
 
 features = model.predict(img_data)
 
-line = list(features)
+line = []
+
+for feature in features:
+    line.append(feature)
 
 line.append(plant_class[0].firstChild.data)
 line.append('3610')
@@ -59,6 +62,9 @@ with open(filename,'w') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(fields)
     csvwriter.writerow(line)    
+
+#import pandas as pd
+#test = pd.read_csv('resnet50_features.csv')
 
 #for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
 #    if filename.endswith(".jpg"):
