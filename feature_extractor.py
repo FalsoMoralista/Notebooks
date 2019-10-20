@@ -52,9 +52,7 @@ features = model.predict(img_data)
 
 line = []
 
-feature_list = features.tolist()
-
-print(len(feature_list))
+features = features.reshape(1,2048)
 print(len(features))
 #for i in range(len(feature_list)):
 #    print(feature_list[i])
