@@ -52,8 +52,10 @@ features = model.predict(img_data)
 
 line = []
 
-for i in list(features):
-    print(i)
+feature_list = list(features)
+
+for i in len(feature_list):
+    print(feature_list[i])
 
 line.append(plant_class[0].firstChild.data)
 line.append('3610')
