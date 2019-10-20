@@ -22,74 +22,41 @@ import csv
 
 print(tf.__version__) # compatible with tensorflow 1.14
 
+# Load pre-trained model
 resnet50 = ResNet50(weights='imagenet')
 model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
 resnet50.trainable = False
 
-base_dir = '/home/luciano/Desktop/PlantCLEF2013/'
-sample = base_dir + '36310'
-
-img = image.load_img(sample+'.jpg', target_size=(224,224))
-
-img_data = image.img_to_array(img)
-img_data = np.expand_dims(img_data, axis=0)
-img_data = preprocess_input(img_data)
-
-doc = minidom.parse(sample+'.xml')
-
-plant_class = doc.getElementsByTagName('ClassId')
-filename = 'resnet50_features'+'.csv'
-
+# Format the csv fields
 fields = []
-
 for i in range(2048):
     fields.append('n'+str(i))
-
 fields.append('category')
 fields.append('image name')
-
-features = model.predict(img_data)
-
-line = []
-
-for x in np.nditer(features):
-    line.append(str(x))
-
-line.append(plant_class[0].firstChild.data)
-line.append('3610')
-
-print(line)
-
-with open(filename,'w') as csvfile:
+# Open the csv and append primary fields
+with open('resnet50_features.csv','w') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(fields)
-    csvwriter.writerow(line)    
+    for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'): # For each image
+        if filename.endswith(".jpg"):
+            name = filename.replace('.jpg','') # Get its name
+            print('File name: %s' %(name))
+            doc = minidom.parse('/home/luciano/Desktop/PlantCLEF2013/'+name+'.xml') # Open its xml
+            plant_class = doc.getElementsByTagName('ClassId') # Get its class
+            img = image.load_img('/home/luciano/Desktop/PlantCLEF2013/'+filename, target_size=(224,224)) # Load and format to the model expected input size
+            img_data = image.img_to_array(img) 
+            img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
+            img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
+            features = model.predict(img_data) # Get the features
+            line = []
+            for x in np.nditer(features): 
+                line.append(str(x)) # Append them to a list format
+            line.append(plant_class[0].firstChild.data) # Add its class
+            line.append(name) # Add the file name
+            print(line)
+            csvwriter.writerow(line) # Finally write it down to the csv    
 
-#import pandas as pd
-#featuress = pd.read_csv('resnet50_features.csv')
 
-#for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
-#    if filename.endswith(".jpg"):
-#    	name = filename.replace('.jpg','')
-#    	doc = minidom.parse('/home/luciano/Desktop/PlantCLEF2013/'+name+'.xml')
-#    	plant_class = doc.getElementsByTagName('ClassId')
-#    	print(plant_class[0].firstChild.data)
-#        img = image.load_img('/home/luciano/Desktop/PlantCLEF2013/'+filename, target_size=(224,224))
-#        img_data = image.img_to_array(img)
-#        img_data = np.expand_dims(img_data, axis=0)
-#        img_data = preprocess_input(img_data)
-#        features = model.predict(img_data)
-#        print(features.shape)
-#        print(features)
-
-#import matplotlib.pyplot as plt
-
-#url = 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg'
-#name = url.split("/")[-1]
-#image_path = tf.keras.utils.get_file(name, origin=url)
-
-#raw_img = download(url)
-#img = tf.image.resize(raw_img, (224,224))
 
 
 
