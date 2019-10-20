@@ -53,7 +53,7 @@ features = model.predict(img_data)
 line = []
 
 for x in np.nditer(features):
-    print("%f\n" %(x))
+    print(x)
 
 print(len(features))
 #for i in range(len(feature_list)):
