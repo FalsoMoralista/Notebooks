@@ -49,12 +49,11 @@ fields.append('category')
 fields.append('image name')
 
 features = model.predict(img_data)
-print(type(features))
 
 line = []
 
-for i in len(features):
-    line.append(str(features[i]))
+for i in features:
+    print(i)
 
 line.append(plant_class[0].firstChild.data)
 line.append('3610')
