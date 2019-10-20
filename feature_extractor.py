@@ -64,12 +64,12 @@ else:
                     img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
                     img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
                     features = model.predict(img_data) # Get the features
-            line = []
-            for x in np.nditer(features): 
-                line.append(str(x)) # Append them to a list format
-            line.append(plant_class[0].firstChild.data) # Add its class
-            line.append(name) # Add the file name
-            csvwriter.writerow(line) # Finally write it down to the csv    
+                    line = []
+                    for x in np.nditer(features): 
+                        line.append(str(x)) # Append them to a list format
+                    line.append(plant_class[0].firstChild.data) # Add its class
+                    line.append(name) # Add the file name
+                    csvwriter.writerow(line) # Finally write it down to the csv    
     if argv[0] == 'resnet152v2':
         resnet152v2 = ResNet152V2(weights='imagenet')
         model = Model(input=resnet152v2.input, output=resnet152v2.get_layer('avg_pool').output)
@@ -94,12 +94,12 @@ else:
                     img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
                     img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
                     features = model.predict(img_data) # Get the features
-            line = []
-            for x in np.nditer(features): 
-                line.append(str(x)) # Append them to a list format
-            line.append(plant_class[0].firstChild.data) # Add its class
-            line.append(name) # Add the file name
-            csvwriter.writerow(line) # Finally write it down to the csv    
+                    line = []
+                    for x in np.nditer(features): 
+                        line.append(str(x)) # Append them to a list format
+                    line.append(plant_class[0].firstChild.data) # Add its class
+                    line.append(name) # Add the file name
+                    csvwriter.writerow(line) # Finally write it down to the csv    
         
 
 
