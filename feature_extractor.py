@@ -52,7 +52,7 @@ features = model.predict(img_data)
 
 line = []
 
-feature_list = list(features)
+feature_list = features.tolist()
 
 print(len(feature_list))
 print(len(features))
