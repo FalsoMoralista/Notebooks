@@ -58,6 +58,8 @@ for i in len(features):
 line.append(plant_class[0].firstChild.data)
 line.append('3610')
 
+print(line)
+
 with open(filename,'w') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(fields)
