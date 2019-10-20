@@ -50,13 +50,15 @@ fields.append('image name')
 
 features = model.predict(img_data)
 
-features.append(plant_class[0].firstChild.data)
-features.append('3610')
+line = list(features)
+
+line.append(plant_class[0].firstChild.data)
+line.append('3610')
 
 with open(filename,'w') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(fields)
-    csvwriter.writerow(features)    
+    csvwriter.writerow(line)    
 
 #for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
 #    if filename.endswith(".jpg"):
