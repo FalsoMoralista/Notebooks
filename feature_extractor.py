@@ -49,6 +49,7 @@ fields.append('category')
 fields.append('image name')
 
 features = model.predict(img_data)
+print(type(features))
 
 line = []
 
