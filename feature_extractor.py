@@ -64,8 +64,8 @@ with open(filename,'w') as csvfile:
     csvwriter.writerow(fields)
     csvwriter.writerow(line)    
 
-import pandas as pd
-test = pd.read_csv('resnet50_features.csv')
+#import pandas as pd
+#test = pd.read_csv('resnet50_features.csv')
 
 #for filename in os.listdir('/home/luciano/Desktop/PlantCLEF2013'):
 #    if filename.endswith(".jpg"):
