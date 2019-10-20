@@ -54,7 +54,7 @@ line = []
 
 feature_list = list(features)
 
-for i in len(feature_list):
+for i in range(len(feature_list)):
     print(feature_list[i])
 
 line.append(plant_class[0].firstChild.data)
