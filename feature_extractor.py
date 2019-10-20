@@ -54,8 +54,10 @@ line = []
 
 feature_list = list(features)
 
-for i in range(len(feature_list)):
-    print(feature_list[i])
+print(len(feature_list))
+print(len(features))
+#for i in range(len(feature_list)):
+#    print(feature_list[i])
 
 line.append(plant_class[0].firstChild.data)
 line.append('3610')
