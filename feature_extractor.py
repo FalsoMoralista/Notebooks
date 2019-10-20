@@ -22,6 +22,8 @@ import csv
 
 print(tf.__version__) # compatible with tensorflow 1.14
 
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
 # Load pre-trained model
 resnet50 = ResNet50(weights='imagenet')
 model = Model(input=resnet50.input, output=resnet50.get_layer('avg_pool').output)
