@@ -82,7 +82,7 @@ else:
         # Open the csv and append primary fields
         with open('resnet152v2.csv','w') as csvfile:
             csvwriter = csv.writer(csvfile)
-            #csvwriter.writerow(fields)
+            csvwriter.writerow(fields)
             for filename in os.listdir(base_dir): # For each image
                 if filename.endswith(".jpg"):
                     print(filename)
@@ -94,7 +94,6 @@ else:
                     img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
                     img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
                     features = model.predict(img_data) # Get the features
-                    print(features.shape)
             line = []
             for x in np.nditer(features): 
                 line.append(str(x)) # Append them to a list format
