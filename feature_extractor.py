@@ -21,9 +21,6 @@ import numpy as np
 import csv
 import sys
 
-print(tf.__version__) # compatible with tensorflow 1.14
-
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 
 
@@ -35,8 +32,10 @@ if len(argv) < 2:
     print('arg1: dataset directory ')
     print('eg: python feature_extractor.py resnet50 /home/joe/Desktop/dataset')
     print("Currently available implementations:")
-    print("1 - Resnet50")
+    print(".Resnet50")
 else:
+    print(tf.__version__) # compatible with tensorflow 1.14
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
     if argv[0] == 'resnet50':
         base_dir = argv[1]
         # Load pre-trained model
