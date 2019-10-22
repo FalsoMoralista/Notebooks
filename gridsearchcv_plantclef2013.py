@@ -105,8 +105,8 @@ def multi_clf_metrics(arq_csv):
   parameters = {"estimator__C" : [0.01, 0.1, 1, 10, 100, 1000], 'estimator__gamma':[0.001, 0.01, 0.1, 1]}
   results = []
   f = open('gd_srch_results_resnet152.csv','w')
-  f.write('classifier name,'+'best parameters,'+'all results')
-  f.close
+  f.write('classifier name,'+'best parameters,'+'all results\n')
+  f.close()
   for name_clf, clf in classifiers.items():
     print('Executando classificador'+ name_clf)
     scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True)
