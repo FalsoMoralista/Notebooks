@@ -103,7 +103,6 @@ else:
                     csvwriter.writerow(line) # Finally write it down to the csv    
     if argv[0] == 'nasnetlarge':
         nasnetlarge = NASNetLarge(weights='imagenet')
-        print(nasnetlarge.summary())
         model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('global_average_pooling2d_1').output)
         nasnetlarge.trainable = False
         fields = []
@@ -126,13 +125,12 @@ else:
                     img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
                     img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
                     features = model.predict(img_data) # Get the features
-                    print(features.shape)
                     line = []
-#                    for x in np.nditer(features): 
-#                        line.append(str(x)) # Append them to a list format
-#                    line.append(plant_class[0].firstChild.data) # Add its class
-#                    line.append(name) # Add the file name
-#                    csvwriter.writerow(line) # Finally write it down to the csv    
+                    for x in np.nditer(features): 
+                        line.append(str(x)) # Append them to a list format
+                    line.append(plant_class[0].firstChild.data) # Add its class
+                    line.append(name) # Add the file name
+                    csvwriter.writerow(line) # Finally write it down to the csv    
         
 
 
