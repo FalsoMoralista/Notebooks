@@ -111,7 +111,7 @@ else:
         fields.append('category')
         fields.append('image name')
         # Open the csv and append primary fields
-        with open('nasnetlarge.csv','w') as csvfile:
+        with open('nasnetlarge_features.csv','w') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow(fields)
             for filename in os.listdir(base_dir): # For each image
