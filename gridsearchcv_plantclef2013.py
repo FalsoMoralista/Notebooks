@@ -25,10 +25,10 @@ from sklearn.metrics import classification_report
 from collections import defaultdict
 
 # Commented out IPython magic to ensure Python compatibility.
-from google.colab import drive
-drive.mount('/gdrive/')
+#from google.colab import drive
+#drive.mount('/gdrive/')
 # %cd /gdrive/My\ Drive/artigo_plantas
-!ls
+#!ls
 
 #Variáveis do Dataset de Resultados
 arquivo_csv = []
@@ -107,11 +107,15 @@ def multi_clf_metrics(arq_csv):
   parameters = {"estimator__C" : [0.01, 0.1, 1, 10, 100, 1000], 'estimator__gamma':[0.001, 0.01, 0.1, 1]}
   results = []
   for name_clf, clf in classifiers.items():
-    print(f'Executando classificador \033[1;31m{name_clf}\033[m')
+    print('Executando classificador'+ name_clf)
     scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, n_jobs=-1, refit='f1_micro', return_train_score=True)
     result = scores.fit(principal_components,y)
     results.append(result)
     print('Melhor configuração: '+result.best_params_)
   return result
 
-result_resnet50 = multi_clf_metrics('resnet50_features.csv')
+results = multi_clf_metrics('resnet152v2_features.csv')
+f = open('gd_srch_results_resnet152.txt','w')
+for result in results:
+	f.write(result+'\n')
+f.close()
