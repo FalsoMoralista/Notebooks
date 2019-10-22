@@ -16,6 +16,7 @@ from xml.dom import minidom
 import tensorflow as tf
 from keras.applications.resnet50 import ResNet50, preprocess_input
 from keras.applications.resnet_v2 import ResNet152V2, preprocess_input
+from keras.applications.nasnet import NASNetLarge, preprocess_input
 from keras.preprocessing import image
 from keras.models import Model
 import numpy as np
@@ -100,6 +101,37 @@ else:
                     line.append(plant_class[0].firstChild.data) # Add its class
                     line.append(name) # Add the file name
                     csvwriter.writerow(line) # Finally write it down to the csv    
+    if argv[0] == 'nasnetlarge':
+        nasnetlarge = NASNetLarge(weights='imagenet')
+        model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('avg_pool').output)
+        nasnetlarge.trainable = False
+        fields = []
+        for i in range(2048):
+            fields.append('n'+str(i))
+        fields.append('category')
+        fields.append('image name')
+        # Open the csv and append primary fields
+        with open('nasnetlarge.csv','w') as csvfile:
+            csvwriter = csv.writer(csvfile)
+            csvwriter.writerow(fields)
+            for filename in os.listdir(base_dir): # For each image
+                if filename.endswith(".jpg"):
+                    print(filename)
+                    name = filename.replace('.jpg','') # Get its name
+                    doc = minidom.parse(base_dir+'/'+name+'.xml') # Open its xml
+                    plant_class = doc.getElementsByTagName('ClassId') # Get its class
+                    img = image.load_img(base_dir+'/'+filename, target_size=(331,331)) # Load and format to the model expected input size
+                    img_data = image.img_to_array(img) 
+                    img_data = np.expand_dims(img_data, axis=0) # Fit it to a 1D list
+                    img_data = preprocess_input(img_data) # Preprocess accordingly to the model preferences
+                    features = model.predict(img_data) # Get the features
+                    print(features.shape)
+                    line = []
+#                    for x in np.nditer(features): 
+#                        line.append(str(x)) # Append them to a list format
+#                    line.append(plant_class[0].firstChild.data) # Add its class
+#                    line.append(name) # Add the file name
+#                    csvwriter.writerow(line) # Finally write it down to the csv    
         
 
 
