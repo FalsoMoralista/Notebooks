@@ -103,7 +103,7 @@ else:
                     csvwriter.writerow(line) # Finally write it down to the csv    
     if argv[0] == 'nasnetlarge':
         nasnetlarge = NASNetLarge(weights='imagenet')
-        model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('avg_pool').output)
+        model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('avg').output)
         nasnetlarge.trainable = False
         fields = []
         for i in range(2048):
