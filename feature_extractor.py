@@ -104,10 +104,10 @@ else:
     if argv[0] == 'nasnetlarge':
         nasnetlarge = NASNetLarge(weights='imagenet')
         print(nasnetlarge.summary())
-        model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('avg').output)
+        model = Model(input=nasnetlarge.input, output=nasnetlarge.get_layer('global_average_pooling2d_1').output)
         nasnetlarge.trainable = False
         fields = []
-        for i in range(2048):
+        for i in range(4032):
             fields.append('n'+str(i))
         fields.append('category')
         fields.append('image name')
