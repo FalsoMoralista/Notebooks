@@ -69,10 +69,8 @@ def multi_clf_metrics(arq_csv):
 
 	# Cria X (features) e y (labels)
   especies = pd.read_csv(arq_csv, low_memory=False)
-	
-  if arq_csv == 'resnet50_features.csv' or arq_csv == 'resnet152v2_features.csv':
-    X = np.array(especies.iloc[0:,0:2048])
-    y = np.array(especies.iloc[0:,2048])		
+  X = np.array(especies.iloc[0:,0:2048])
+  y = np.array(especies.iloc[0:,2048])		
   # Executa o PCA
   pca = PCA(.90)
   principal_components = pca.fit_transform(X)
