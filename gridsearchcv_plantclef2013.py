@@ -78,7 +78,7 @@ def multi_clf_metrics(arq_csv):
   classifiers = {'SVC - (linear, ovr)': OneVsRestClassifier(svm.SVC(kernel='linear', degree=3, coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
-											decision_function_shape='ovr', random_state=None), n_jobs=-1),
+											decision_function_shape='ovr', random_state=None)),
 					'SVC - (linear, ovo)': svm.SVC(kernel='linear', degree=3, coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
@@ -86,7 +86,7 @@ def multi_clf_metrics(arq_csv):
 					'SVC - (polynomial, ovr)': OneVsRestClassifier(svm.SVC(kernel='poly', degree=3, coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
-											decision_function_shape='ovr', random_state=None), n_jobs=-1),
+											decision_function_shape='ovr', random_state=None)),
 					'SVC - (polynomial, ovo)': svm.SVC(kernel='poly', degree=3, coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
@@ -94,7 +94,7 @@ def multi_clf_metrics(arq_csv):
 					'SVC - (sigmoid, ovr)': OneVsRestClassifier(svm.SVC(kernel='sigmoid', degree=3,coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
-											decision_function_shape='ovr', random_state=None), n_jobs=-1),
+											decision_function_shape='ovr', random_state=None)),
 					'SVC - (sigmoid, ovo)': svm.SVC(kernel='sigmoid', degree=3, coef0=0.0,
 											shrinking=True, probability=False, tol=0.001, cache_size=500,
 											class_weight=None, verbose=False, max_iter=-1,
@@ -109,7 +109,7 @@ def multi_clf_metrics(arq_csv):
   f.close()
   for name_clf, clf in classifiers.items():
     print('Executando classificador'+ name_clf)
-    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True)
+    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True, n_jobs=-1)
     result = scores.fit(principal_components,y)
     results.append(result)
     print('Melhor configuração: '+result.best_params_)
