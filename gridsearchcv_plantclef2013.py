@@ -109,7 +109,7 @@ def multi_clf_metrics(arq_csv):
   f.close()
   for name_clf, clf in classifiers.items():
     print('Executando classificador'+ name_clf)
-    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True, n_jobs=-1)
+    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True, n_jobs=4)
     result = scores.fit(principal_components,y)
     results.append(result)
     print('Melhor configuração: '+result.best_params_)
