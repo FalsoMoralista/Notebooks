@@ -102,14 +102,14 @@ def multi_clf_metrics(arq_csv):
 
   scoring = ['f1_micro']
   # Parametros para rodar com o grid search
-  parameters = {"estimator__C" : [0.01, 0.1, 1, 10, 100, 1000], 'estimator__gamma':[0.001, 0.01, 0.1, 1]}
+  parameters = {"estimator__C" : [0.01, 0.1, 10], 'estimator__gamma':[0.0001, 0.001, 0.01]}
   results = []
   f = open('gd_srch_results_resnet152.csv','w')
   f.write('classifier name,'+'best parameters,'+'all results\n')
   f.close()
   for name_clf, clf in classifiers.items():
     print('Executando classificador'+ name_clf)
-    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True, n_jobs=4)
+    scores = GridSearchCV(clf, parameters,cv=5, scoring=scoring, refit='f1_micro', return_train_score=True, n_jobs=4, verbose=50)
     result = scores.fit(principal_components,y)
     results.append(result)
     print('Melhor configuração: '+result.best_params_)
