@@ -94,4 +94,4 @@ def multi_clf_metrics(arq_csv):
     f.close()
   return result
 
-results = multi_clf_metrics('../features/plantclef2013_vgg16.csv')
+results = multi_clf_metrics('plantclef2013_vgg16.csv')
