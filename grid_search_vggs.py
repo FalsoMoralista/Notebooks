@@ -20,7 +20,7 @@ Original file is located at
 #from sklearn import metrics
 import pandas as pd
 import numpy as np
-import glob
+#import glob
 from sklearn.decomposition import PCA
 from sklearn import svm
 #from sklearn.ensemble import RandomForestClassifier
@@ -35,7 +35,7 @@ import collections
 #from collections import defaultdict
 
 # Commented out IPython magic to ensure Python compatibility.
-from google.colab import drive
+#from google.colab import drive
 #drive.mount('/gdrive/')
 # %cd /gdrive/My\ Drive/artigo_plantas
 #!ls
@@ -94,4 +94,4 @@ def multi_clf_metrics(arq_csv):
     f.close()
   return result
 
-results = multi_clf_metrics('plantclef2013_vgg16.csv')
+results = multi_clf_metrics('../features/plantclef2013_vgg16.csv')
