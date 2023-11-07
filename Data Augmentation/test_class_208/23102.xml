@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>23102.jpg</FileName>
+  <IndividualPlantId>5053</IndividualPlantId>
+  <Date>02/08/11</Date>
+  <Locality>France - Pralognan-La-Vanoise</Locality>
+  <GPSLocality>
+    <Longitude>6.721232</Longitude>
+    <Latitude>45.382062</Latitude>
+  </GPSLocality>
+  <Author>Jean-Luc Gorremans</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Entire</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>

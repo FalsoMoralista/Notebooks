@@ -1,0 +1,66 @@
+
+
+**************Overview and Copyright******************
+This training set is a subset of Pl@ntView dataset which contains various pictures of plants on 250 species of herbs and trees mainly from French area. It contains scans and photographs. Scans are exclusively focussing on one single leaf, while 5 categories of photographs "into the wild" are focusing on different subparts and views of a plant: flower(s), fruit(s), All data contained in this package are under a creative common license.
+******************************************************
+
+**************Training set description****************
+
+Training AND test pictures of leaves used during ImageCLEF 2012 are part of the Pl@ntView dataset and they are systematically included in the training set. New scans and scan-like images of leaves are introduced on new species (and more will be used as test images in the next test dataset). For the new views of flower, fruit, stem and entire plant, train pictures were chosen by randomly sampling 2/3 of the individual plants - and not images - of each species. An individual plant is one single plant observed by one same person the same day with the same device with the same lightening conditions. Each individual plant observed are very often associated to several pictures of different views (for instance scans of leaves and photographs of flowers and of of leaves). It means that these pictures are strongly connected, and may be very similar, even being near-duplicate pictures. This is why we didn't split data by taking into account single images but single individual plants. As as a consequence, pictures with the same IndividualPlantId are all in the train dataset or all in the test dataset.
+
+All images are in jpeg format and were resized so that the maximum width or height does not exceed 800 pixels. Each image is uniquely identified by an integer "uid" between 1 and 30000. Each image is named by 
+-->  uid.jpg 
+
+the xml file containing the meta-data of an image identified by uid is named by:
+--> uid.xml   
+
+Simplified species names are the class names to consider and to retrieve. A simplified species name is explicitly identified by the field <ClassId> in the xml file, and it represents the pair of string:
+"Genus_name_without_autor_name specie_name_without_autor_name"
+with a uppercase for the genus name and and a lowercase for the specie name (ex: "Quercus ilex", "Betula stills", with sometimes a third string for hybrid species like "Platanus x hispanica")
+
+The string "Genus_name_without_autor_name specie_name_without_autor_name" is exactly the same than the one contained in the xml files in the field <ClassId>.
+
+Other metadata contained in xml files are the following:
+<FileName> name of the jpg file of the image
+<Date> day/month/year 
+<Type>"SheetAsBackground" or "NaturalBackground": SheetAsBackground concerns actually scan or scan-like pictures of leaves exclusively in a front of a uniform AND artificial (paper, sheet, folder…), while NaturalBackground is used for photographs "into the wild".
+<Content>"Leaf", "Flower", "Fruit", "Stem", "Entire" concerns the kind of detailed view of a plant.
+<IndividualPlantId>Id for identifying one single individual plant which may associated with several pictures in the dataset
+<ClassId>identifier of the species, class name to be used for the task
+<Taxon> Full taxonomic classification with author(s) name(s) for each level
+    <Regnum>
+    <Class>
+    <Subclass>
+    <Superorder>
+    <Order>
+    <Family>
+    <Species>
+    <Genus>
+</Taxon>
+<VernacularNames> english common name of the species
+<Author> name of the author of the picture
+<Organization> name of the organisation of the author of the picture 
+<Locality> Country - town where the pictures of one plant were observed
+<GPSLocality> Geo-coordinates where the picture was taken
+   <Longitude>
+   <Latitude>
+</GPSLocality>
+<Year>ImageCLEF2012, 2011 or 2013 indicates which task year the pictures was introduced
+<IndividualPlantId2012> the previous IndividualPlantId during the last year task if relevant
+<ImageID2012>xxxx.jpg the previous name of the picture during the last year task if relevant
+
+
+****************************************************
+
+
+****************************************************
+
+***************Contact******************************
+herve.goeau(arobase)inria.fr
+alexis.joly(arobase)inria.fr
+pierre.bonnet(arobase)cirad.fr
+****************************************************
+
+
+
+  

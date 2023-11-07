@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>8024.jpg</FileName>
+  <IndividualPlantId>414</IndividualPlantId>
+  <Date>15/07/10</Date>
+  <Locality>France - Abondance</Locality>
+  <GPSLocality>
+    <Longitude>6.788394</Longitude>
+    <Latitude>46.295272</Latitude>
+  </GPSLocality>
+  <Author>Hugues Tinguy</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Flower</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>

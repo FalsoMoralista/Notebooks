@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>6602.jpg</FileName>
+  <IndividualPlantId>1130</IndividualPlantId>
+  <Date>15/07/11</Date>
+  <Locality>France - Les Contamines-Montjoie</Locality>
+  <GPSLocality>
+    <Longitude>6.726553</Longitude>
+    <Latitude>45.822746</Latitude>
+  </GPSLocality>
+  <Author>Gerard Calberac</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Flower</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>

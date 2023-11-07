@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>18960.jpg</FileName>
+  <IndividualPlantId>1400</IndividualPlantId>
+  <Date>16/07/10</Date>
+  <Locality>France - Châtel</Locality>
+  <GPSLocality>
+    <Longitude>6.841152</Longitude>
+    <Latitude>46.267395</Latitude>
+  </GPSLocality>
+  <Author>Hugues Tinguy</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Flower</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>

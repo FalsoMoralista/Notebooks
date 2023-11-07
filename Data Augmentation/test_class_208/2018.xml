@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>2018.jpg</FileName>
+  <IndividualPlantId>1226</IndividualPlantId>
+  <Date>16/07/08</Date>
+  <Locality>France - Chamonix-Mont-Blanc</Locality>
+  <GPSLocality>
+    <Longitude>6.869433</Longitude>
+    <Latitude>45.923697</Latitude>
+  </GPSLocality>
+  <Author>Mathieu Menand</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Flower</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>

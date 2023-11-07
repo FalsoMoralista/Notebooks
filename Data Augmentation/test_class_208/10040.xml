@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Image>
+  <FileName>10040.jpg</FileName>
+  <IndividualPlantId>3805</IndividualPlantId>
+  <Date>13/07/08</Date>
+  <Locality>France - Saint-Gervais-Les-Bains</Locality>
+  <GPSLocality>
+    <Longitude>6.712187</Longitude>
+    <Latitude>45.892013</Latitude>
+  </GPSLocality>
+  <Author>Mathieu Menand</Author>
+  <Organization>Tela Botanica</Organization>
+  <Type>NaturalBackground</Type>
+  <Content>Flower</Content>
+  <Year>ImageCLEF2013</Year>
+</Image>
